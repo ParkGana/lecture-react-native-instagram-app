@@ -1,11 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, StatusBar } from 'react-native'
 import ActivityHistory from '../components/ActivityHistory'
 import ActivityRecommend from '../components/ActivityRecommend'
 
 const Activity = () => {
     return (
         <SafeAreaView style={styles.Container}>
+            <StatusBar backgroundColor={'black'} barStyle={'light-content'} />
             <Text style={styles.Title}>활동</Text>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.CategoryContainer}>
