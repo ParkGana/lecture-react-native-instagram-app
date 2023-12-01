@@ -1,7 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type NavigationPage = {
+    EditProfile: undefined
+}
 
 const ProfileBody = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<NavigationPage>>()
+
     return (
         <View>
             <View style={styles.ItemContainer}>
@@ -23,7 +31,7 @@ const ProfileBody = () => {
                         <Text style={styles.Title}>팔로잉</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={styles.ButtonContainer}>
+                <TouchableOpacity style={styles.ButtonContainer} onPress={() => navigation.push('EditProfile')}>
                     <View style={styles.Button}>
                         <Text style={styles.ButtonText}>프로필 수정</Text>
                     </View>
@@ -73,8 +81,8 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#333333',
+        borderWidth: 2,
+        borderColor: '#c5cad2',
         borderRadius: 10
     },
     ButtonText: {
