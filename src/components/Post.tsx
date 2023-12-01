@@ -1,14 +1,21 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
+type NavigationPage = {
+    FriendProfile: undefined
+}
 const Post = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<NavigationPage>>()
+
     return (
         <View>
             {[...Array(10)].map((number, index) => (
                 <View style={styles.ItemContainer} key={index}>
                     <View style={styles.HeaderContainer}>
                         <View style={styles.ProfileContainer}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.push('FriendProfile')}>
                                 <Image
                                     source={require('../../assets/images/example-profile.png')}
                                     style={styles.ProfileImage}

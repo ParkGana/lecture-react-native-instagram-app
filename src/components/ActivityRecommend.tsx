@@ -1,21 +1,30 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
+type NavigationPage = {
+    FriendProfile: undefined
+}
 const ActivityRecommend = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<NavigationPage>>()
+
     return (
         <View>
             {[...Array(10)].map((number, index) => (
                 <View style={styles.ItemContainer} key={index}>
-                    <TouchableOpacity style={styles.ProfileContainer}>
-                        <Image
-                            source={require('../../assets/images/example-profile.png')}
-                            style={styles.ProfileImage}
-                        />
+                    <View style={styles.ProfileContainer}>
+                        <TouchableOpacity onPress={() => navigation.push('FriendProfile')}>
+                            <Image
+                                source={require('../../assets/images/example-profile.png')}
+                                style={styles.ProfileImage}
+                            />
+                        </TouchableOpacity>
                         <View>
                             <Text style={styles.NameText}>이름</Text>
                             <Text style={styles.RecommendText}>회원님을 위한 추천</Text>
                         </View>
-                    </TouchableOpacity>
+                    </View>
                     <View style={styles.ActionContainer}>
                         <TouchableOpacity>
                             <View style={styles.Button}>

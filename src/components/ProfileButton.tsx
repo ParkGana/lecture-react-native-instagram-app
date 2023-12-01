@@ -6,15 +6,28 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 type NavigationPage = {
     EditProfile: undefined
 }
-const ProfileButton = () => {
+const ProfileButton = ({ my }: { my?: boolean }) => {
     const navigation = useNavigation<NativeStackNavigationProp<NavigationPage>>()
 
     return (
-        <TouchableOpacity style={styles.ButtonContainer} onPress={() => navigation.push('EditProfile')}>
-            <View style={styles.Button}>
-                <Text style={styles.ButtonText}>프로필 수정</Text>
-            </View>
-        </TouchableOpacity>
+        <>
+            {my ? (
+                <TouchableOpacity style={styles.ButtonContainer} onPress={() => navigation.push('EditProfile')}>
+                    <View style={styles.BasicButton}>
+                        <Text style={styles.BasicButtonText}>프로필 수정</Text>
+                    </View>
+                </TouchableOpacity>
+            ) : (
+                <TouchableOpacity style={styles.MultiButtonContainer}>
+                    <View style={styles.FollowButton}>
+                        <Text style={styles.FollowButtonText}>팔로우</Text>
+                    </View>
+                    <View style={styles.BasicButton}>
+                        <Text style={styles.BasicButtonText}>메시지</Text>
+                    </View>
+                </TouchableOpacity>
+            )}
+        </>
     )
 }
 
@@ -24,7 +37,27 @@ const styles = StyleSheet.create({
     ButtonContainer: {
         marginHorizontal: 10
     },
-    Button: {
+    MultiButtonContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 10
+    },
+    FollowButton: {
+        width: '49%',
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: '2%',
+        borderRadius: 10,
+        backgroundColor: '#0584f3'
+    },
+    FollowButtonText: {
+        fontSize: 14,
+        fontWeight: '700',
+        color: '#ffffff'
+    },
+    BasicButton: {
+        width: '49%',
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
@@ -32,7 +65,7 @@ const styles = StyleSheet.create({
         borderColor: '#c5cad2',
         borderRadius: 10
     },
-    ButtonText: {
+    BasicButtonText: {
         fontSize: 14,
         fontWeight: '700'
     }

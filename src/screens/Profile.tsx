@@ -19,7 +19,7 @@ const Profile = () => {
                 </View>
             </View>
             <ProfileBody />
-            <ProfileButton />
+            <ProfileButton my />
             <ScrollView>
                 <ProfileStory />
                 <ProfilePost />
