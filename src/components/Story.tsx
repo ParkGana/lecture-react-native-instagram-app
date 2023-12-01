@@ -1,11 +1,19 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type NavigationPage = {
+    DetailStory: undefined
+}
 
 const Story = () => {
+    const navigation = useNavigation<NativeStackNavigationProp<NavigationPage>>()
+
     return (
         <ScrollView style={styles.Container} horizontal={true} showsHorizontalScrollIndicator={false}>
             {[...Array(10)].map((number, index) => (
-                <TouchableOpacity key={index}>
+                <TouchableOpacity key={index} onPress={() => navigation.push('DetailStory')}>
                     <View style={styles.ItemContainer}>
                         {index === 0 && (
                             <View style={styles.IconContainer}>
