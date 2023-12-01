@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image, ScrollView } fr
 import ProfileBody from '../components/ProfileBody'
 import ProfileStory from '../components/ProfileStory'
 import ProfilePost from '../components/ProfilePost'
+import ProfileButton from '../components/ProfileButton'
 
 const Profile = () => {
     return (
@@ -18,6 +19,7 @@ const Profile = () => {
                 </View>
             </View>
             <ProfileBody />
+            <ProfileButton />
             <ScrollView>
                 <ProfileStory />
                 <ProfilePost />
